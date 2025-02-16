@@ -2,6 +2,7 @@ import './style.css'
 import * as THREE from 'three'
 
 const scene = new THREE.Scene()
+scene.background = new THREE.Color('#180018')
 scene.add(new THREE.AmbientLight())
 scene.add(new THREE.DirectionalLight())
 scene.fog = new THREE.Fog('#ffa2ff', 150, 250)
