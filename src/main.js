@@ -4,7 +4,7 @@ import * as THREE from 'three'
 const scene = new THREE.Scene()
 scene.add(new THREE.AmbientLight())
 scene.add(new THREE.DirectionalLight())
-scene.fog = new THREE.Fog('#fff0ff', 150, 250)
+scene.fog = new THREE.Fog('#ffa2ff', 150, 250)
 
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
 
