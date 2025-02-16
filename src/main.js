@@ -3,10 +3,10 @@ import * as THREE from 'three'
 
 const scene = new THREE.Scene()
 scene.add(new THREE.AmbientLight())
-scene.add(new THREE.DirectionalLight(0xffffff, 0.7))
+scene.add(new THREE.DirectionalLight())
 scene.fog = new THREE.Fog('#fff0ff', 150, 250)
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
 
 const renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
@@ -14,17 +14,18 @@ document.body.appendChild(renderer.domElement)
 
 const color = '#ff8eff'
 const rotation = 90 * (Math.PI / 180)
+const shininess = 80
 
 const torus = (...args) => {
   const geometry = new THREE.TorusGeometry(...args)
-  const material = new THREE.MeshLambertMaterial({ color })
+  const material = new THREE.MeshPhongMaterial({ color, shininess })
 
   return new THREE.Mesh(geometry, material)
 }
 
 const cylinder = (...args) => {
   const geometry = new THREE.CylinderGeometry(...args)
-  const material = new THREE.MeshLambertMaterial({ color })
+  const material = new THREE.MeshPhongMaterial({ color, shininess })
 
   return new THREE.Mesh(geometry, material)
 }
@@ -123,7 +124,7 @@ const cylinder18 = cylinder(1, 1, 18.5, 60)
 cylinder18.position.set(-34, 21, 0)
 cylinder18.rotateZ(-45 * (Math.PI / 180))
 
-camera.position.z = 110
+camera.position.z = 170
 
 const group = new THREE.Group()
 
@@ -160,9 +161,8 @@ group.add(cylinder19)
 scene.add(group)
 
 const animate = () => {
-  const value = 0.001
-  group.rotation.x += value
-  group.rotation.y += value
+  group.rotation.x += 0.0004
+  group.rotation.y += 0.002
 
 	renderer.render(scene, camera)
 
