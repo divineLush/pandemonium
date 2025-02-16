@@ -167,6 +167,6 @@ const animate = () => {
 	renderer.render(scene, camera)
 
 }
-renderer.render(scene, camera)
+// renderer.render(scene, camera)
 
-// renderer.setAnimationLoop(animate)
+renderer.setAnimationLoop(animate)
